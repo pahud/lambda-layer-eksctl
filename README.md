@@ -27,6 +27,9 @@ check the typescript sample CDK [here](cdk/)
 ```bash
 # deploy the sample stack
 $ cd cdk
+# compile .ts to .js
+$ npm run build
+# deploy the stack
 $ cdk --app ./lib/index.js deploy
 ```
 
