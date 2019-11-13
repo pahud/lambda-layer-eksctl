@@ -22,7 +22,7 @@ This will build a lambda layer and mount `/opt/eksctl/eksctl` binary for your la
 
 ## Work with AWS CDK
 
-check the typescript sample CDK [here](cdk/)
+check the CDK sample [here](cdk/lib/index.ts)
 
 ```bash
 # deploy the sample stack
