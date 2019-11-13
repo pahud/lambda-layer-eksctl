@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  LayerName:
+    Type: String
+    
+    
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: aws-lambda-layer-eksctl
+    Description: "AWS Lambda Layer for eksctl"
+    Author: Pahud Hsieh
+    SpdxLicenseId: Apache-2.0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    Labels: ['layer','lambda','kubectl','eks', 'aws', 'kubernetes', 'k8s']
+    HomePageUrl: https://github.com/aws-samples/aws-lambda-layer-eksctl
+    SemanticVersion: 0.0.1
+    SourceCodeUrl: https://github.com/aws-samples/aws-lambda-layer-eksctl
+
+Transform: AWS::Serverless-2016-10-31
+Description: Create a Layer
+
+Resources:
+  LambdaLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: !Ref LayerName
+      ContentUri: ./layer.zip
+      CompatibleRuntimes: 
+        - provided
+      LicenseInfo: 'Available under the MIT-0 license.'
+      RetentionPolicy: Retain
+
+Outputs:
+  LayerVersionArn:
+    Description: ARN for the published Layer version
+    Value: !Ref LambdaLayer
+    Export:
+      Name: !Sub 'LayerVersionArn-${AWS::StackName}'

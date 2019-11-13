@@ -1,0 +1,8 @@
+*.zip
+sam-layer-packaged.yaml
+packaged.yaml
+VERSION
+func.d
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+sam.yaml
