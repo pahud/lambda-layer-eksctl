@@ -17,7 +17,7 @@ $ make sam-layer-publish
 # [optional] deploy this layer to your account/region
 $ make sam-layer-deploy
 ```
-
+This will build a lambda layer and mount `/opt/eksctl/eksctl` binary for your lambda sandbox when you attach this layer.
 
 
 ## Work with AWS CDK
