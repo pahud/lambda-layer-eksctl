@@ -46,6 +46,7 @@ sam-layer-package:
 	-v $(HOME)/.aws:/home/samcli/.aws \
 	-w /home/samcli/workdir \
 	-e AWS_DEFAULT_REGION=$(LAMBDA_REGION) \
+	-e AWS_PROFILE=$(AWS_PROFILE) \
 	pahud/aws-sam-cli:latest sam package --template-file sam-layer.yaml --s3-bucket $(S3BUCKET) --output-template-file sam-layer-packaged.yaml
 	@echo "[OK] Now type 'make sam-layer-deploy' to deploy your Lambda layer with SAM"
 
@@ -57,6 +58,7 @@ sam-layer-publish:
 	-v $(HOME)/.aws:/home/samcli/.aws \
 	-w /home/samcli/workdir \
 	-e AWS_DEFAULT_REGION=$(LAMBDA_REGION) \
+	-e AWS_PROFILE=$(AWS_PROFILE) \
 	pahud/aws-sam-cli:latest sam publish --region $(LAMBDA_REGION) --template sam-layer-packaged.yaml \
 	--semantic-version $(shell cat VERSION)
 	@echo "=> version $(shell cat VERSION) published to $(LAMBDA_REGION)"
@@ -67,14 +69,15 @@ sam-layer-deploy:
 	-v $(HOME)/.aws:/home/samcli/.aws \
 	-w /home/samcli/workdir \
 	-e AWS_DEFAULT_REGION=$(LAMBDA_REGION) \
+	-e AWS_PROFILE=$(AWS_PROFILE) \
 	pahud/aws-sam-cli:latest sam deploy --template-file ./sam-layer-packaged.yaml --stack-name "$(LAYER_NAME)-stack"
 	# print the cloudformation stack outputs
-	aws --region $(LAMBDA_REGION) cloudformation describe-stacks --stack-name "$(LAYER_NAME)-stack" --query 'Stacks[0].Outputs'
+	aws --profile $(AWS_PROFILE) --region $(LAMBDA_REGION) cloudformation describe-stacks --stack-name "$(LAYER_NAME)-stack" --query 'Stacks[0].Outputs'
 	@echo "[OK] Layer version deployed."
 
 sam-layer-destroy:
 	# destroy the layer stack	
-	aws --region $(LAMBDA_REGION) cloudformation delete-stack --stack-name "$(LAYER_NAME)-stack"
+	aws --profile $(AWS_PROFILE) --region $(LAMBDA_REGION) cloudformation delete-stack --stack-name "$(LAYER_NAME)-stack"
 	@echo "[OK] Layer version destroyed."
 	
 	
