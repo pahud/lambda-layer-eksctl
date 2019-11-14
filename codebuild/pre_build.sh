@@ -7,4 +7,4 @@ echo "AWS_SECRET_ACCESS_KEY=$(cat session.json | jq -r .Credentials.SecretAccess
 echo "AWS_SESSION_TOKEN=$(cat session.json | jq -r .Credentials.SessionToken)" >> envfile
 source envfile
 aws configure --profile default set aws_access_key_id ${AWS_ACCESS_KEY_ID}
-aws configure --profile default set aws_aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
+aws configure --profile default set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
