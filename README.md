@@ -1,6 +1,6 @@
 # lambda-layer-eksctl
 
-**aws-lambda-layer-eksctl** is an [AWS Lambda Layer](https://docs.aws.amazon.com/en_us/lambda/latest/dg/configuration-layers.html) for `eksctl`.
+**lambda-layer-eksctl** is an [AWS Lambda Layer](https://docs.aws.amazon.com/en_us/lambda/latest/dg/configuration-layers.html) for `eksctl`.
 
 
 
@@ -17,16 +17,19 @@ $ make sam-layer-publish
 # [optional] deploy this layer to your account/region
 $ make sam-layer-deploy
 ```
-
+This will build a lambda layer and mount `/opt/eksctl/eksctl` binary for your lambda sandbox when you attach this layer.
 
 
 ## Work with AWS CDK
 
-check the typescript sample CDK [here](cdk/)
+check the CDK sample [here](cdk/lib/index.ts)
 
 ```bash
 # deploy the sample stack
 $ cd cdk
+# compile .ts to .js
+$ npm run build
+# deploy the stack
 $ cdk --app ./lib/index.js deploy
 ```
 
