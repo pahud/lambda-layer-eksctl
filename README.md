@@ -27,6 +27,8 @@ check the CDK sample [here](cdk/lib/index.ts)
 ```bash
 # deploy the sample stack
 $ cd cdk
+# install all required packages from package.json
+$ npm i
 # compile .ts to .js
 $ npm run build
 # deploy the stack
@@ -47,4 +49,17 @@ curl the API URL to see the `eksctl version` output
 $ curl https://knk0ad1pl8.execute-api.us-west-2.amazonaws.com/prod/
 version.Info{BuiltAt:"", GitCommit:"", GitTag:"0.9.0"}'
 ```
+
+## with custom-resources provider framework
+AWS CDK custom-resources construct library offers a very powerful provider framework to help you define your own custom resource handler. By using **lambda-layer-eksctl** we can easily create our layer from SAR with @aws-eks/aws-sam and build our custom handler lambda function to execute `eksctl` command in the onEvent() handler. Check the CDK sample code [here](https://github.com/pahud/lambda-layer-eksctl/blob/552ff1986ddf1744fef2d243af2cce58df81ee8d/cdk/lib/index.ts#L36-L80) and the custom python handler [here](lambda_sample/index.py) for details.
+
+When you deploy this stack, you will be able to see the output as below and that was the `eksctl version` command output from within the Lambda function.
+
+```
+EksctlLambdaLayerDemo.eksctlOutput = version.Info{BuiltAt:"", GitCommit:"", GitTag:"0.9.0"}'
+```
+
+In this case, you can leverage the powerful `provider framework` to do almost anything `eksctl` can do for you in AWS CDK.
+
+
 
