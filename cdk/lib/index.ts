@@ -19,7 +19,7 @@ const env = {
 
 const stack = new cdk.Stack(app, 'EksctlLambdaLayerDemo', { env })
 
-const EKSCTL_DEFAULT_VERSION = '0.9.0'
+const EKSCTL_DEFAULT_VERSION = '0.10.1'
 
 const vpc = ec2.Vpc.fromLookup(stack, 'Vpc', { isDefault: true });
 
