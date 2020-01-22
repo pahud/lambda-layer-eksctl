@@ -1,6 +1,6 @@
 # FROM lambci/lambda:provided as runtime
 ARG DOCKER_MIRROR=''
-FROM ${DOCKER_MIRROR}alpine:latest
+FROM alpine:latest
 
 RUN \
 	apk -Uuv add bash zip curl
