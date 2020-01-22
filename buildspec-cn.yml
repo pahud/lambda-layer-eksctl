@@ -4,6 +4,9 @@ env:
   variables:
     AWS_DEFAULT_REGION: "cn-north-1"
     AWS_REGION: "cn-north-1"
+    DOCKER_MIRROR: "hub-mirror.c.163.com/"
+    S3BUCKET: "pahud-tmp-cn-north-1"   
+
 phases:
   install:
     runtime-versions: 
@@ -15,7 +18,7 @@ phases:
       commands:
         - echo "touching sam-layer-packaged.yaml and chmod to 777 for samcli user to write in. See http://bit.ly/2Qd5Pxy"
         - touch sam-layer-packaged.yaml && chmod 777 sam-layer-packaged.yaml
-        - S3BUCKET=pahud-tmp-cn-north-1 make publish-new-version-to-sar-cn
+        - make publish-new-version-to-sar-cn
   post_build:
       commands:
         - BUILT_VERSION=$(cat VERSION) 
