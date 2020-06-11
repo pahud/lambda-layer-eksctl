@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.16.3",
+    "@aws-cdk/assert": "^1.45.0",
     "@types/jest": "^24.0.22",
     "@types/node": "10.17.5",
     "jest": "^24.9.0",
@@ -17,17 +17,17 @@
     "typescript": "~3.7.2"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "^1.16.3"
+    "@aws-cdk/core": "^1.45.0"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "^1.16.3",
-    "@aws-cdk/aws-cloudformation": "^1.16.3",
-    "@aws-cdk/aws-eks": "^1.16.3",
-    "@aws-cdk/aws-sam": "^1.16.3",
-    "@aws-cdk/aws-sns": "^1.16.3",
-    "@aws-cdk/aws-sns-subscriptions": "^1.16.3",
-    "@aws-cdk/aws-sqs": "^1.16.3",
-    "@aws-cdk/core": "^1.16.3",
-    "@aws-cdk/custom-resources": "^1.16.3"
+    "@aws-cdk/aws-apigateway": "^1.45.0",
+    "@aws-cdk/aws-cloudformation": "^1.45.0",
+    "@aws-cdk/aws-eks": "^1.45.0",
+    "@aws-cdk/aws-sam": "^1.45.0",
+    "@aws-cdk/aws-sns": "^1.45.0",
+    "@aws-cdk/aws-sns-subscriptions": "^1.45.0",
+    "@aws-cdk/aws-sqs": "^1.45.0",
+    "@aws-cdk/core": "^1.45.0",
+    "@aws-cdk/custom-resources": "^1.45.0"
   }
 }
